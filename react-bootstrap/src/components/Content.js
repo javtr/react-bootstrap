@@ -8,6 +8,8 @@ export default function Content() {
   const [address, setAddress] = useState("");
   const [students, setStudents] = useState([]);
 
+  const [search, setSearch] = useState(false);
+  
   const handleClick = (e) => {
     e.preventDefault();
     const student = { name, address };
@@ -20,6 +22,9 @@ export default function Content() {
     }).then(() => {
       console.log("New Student added");
     });
+
+    setSearch(!search);
+
   };
 
   useEffect(() => {
@@ -28,7 +33,7 @@ export default function Content() {
       .then((result) => {
         setStudents(result);
       })
-  }, []);
+  }, [search]);
 
 
   return (
@@ -65,17 +70,19 @@ export default function Content() {
 
         <Card>
           <Card.Body>
-            <Card.Title className="custom-container__tit1">Students</Card.Title>
-
-            {students.map((student) => (
-              <Card className="custom-container__cardStudent" key={student.id}>
-                Id:{student.id}
-                <br />
-                Name:{student.name}
-                <br />
-                Address:{student.address}
-              </Card>
-            ))}
+            <Card.Title className="custom-container__tit1">sdfdsfsdf</Card.Title>
+                {
+                 students.map((student) => (
+                  <Card className="custom-container__cardStudent" key={student.id}>
+                    Id:{student.id}
+                    <br />
+                    Name:{student.name}
+                    <br />
+                    Address:{student.address}
+                  </Card>
+                ))
+              }
+            
 
           </Card.Body>
         </Card>
